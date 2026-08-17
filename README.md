@@ -29,5 +29,5 @@ The resulting graph shows that most exam scores are concentrated around 70, whil
 ## Learning Objective
 
 This project helped me understand basic data visualization using Python, NumPy, and Matplotlib.
-<img width="558" height="361" alt="image" src="https://github.com/user-attachments/assets/b82dcc3b-36f9-4ed1-b9b8-525401cebabb" />
+
 
