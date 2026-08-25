@@ -69,29 +69,50 @@ print(arr[idx])
 
 
 #--------------------------------#
-import numpy as np
+ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn
+import seaborn as sns
 import os
 
-# read Datasets
+# Read dataset
 df = pd.read_csv("retail_store_sales.csv")
 
-# Basic Inspections
-print(df)
+# Basic inspections
+print(df.head())
 print(df.info())
 print(df.describe())
 
-# Missing Values
+# Missing values
+print("Missing values ratio:")
 print(df.isnull().mean())
-print(df.isnull().mean()*100)
+print("Missing values percentage:")
+print(df.isnull().mean() * 100)
 
-# Check duplicates (added missing parentheses)
-df[df.duplicated]
-df1 = df
+# Check duplicates
+print("Duplicate rows:")
+print(df[df.duplicated()])
 
 # Data cleaning
-df1.head(15)
-df2 = df1.drop(columns=["Transaction ID"])
-df2.head(15)
+df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_")
+df = df.drop(columns=["transaction_id"])
+
+# Preview cleaned data
+print(df.head(15))
+
+# Fill missing Item values
+df.loc[
+    (df["item"].isna()) &
+    (df["price_per_unit"] == 33.5) &
+    (df["category"] == "Furniture"),
+    "item"
+] = "item_20_fur"
+
+# Verify replacement
+print(
+    df[
+       (df["price_per_unit"] == 33.5) &
+       (df["category"] == "Furniture")
+    ]
+)
+
