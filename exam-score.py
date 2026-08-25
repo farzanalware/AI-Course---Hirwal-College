@@ -66,3 +66,32 @@ print(passed)
 # Fancy indexing
 idx = [0, 3, 4]
 print(arr[idx])
+
+
+#--------------------------------#
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn
+import os
+
+# read Datasets
+df = pd.read_csv("retail_store_sales.csv")
+
+# Basic Inspections
+print(df)
+print(df.info())
+print(df.describe())
+
+# Missing Values
+print(df.isnull().mean())
+print(df.isnull().mean()*100)
+
+# Check duplicates (added missing parentheses)
+df[df.duplicated]
+df1 = df
+
+# Data cleaning
+df1.head(15)
+df2 = df1.drop(columns=["Transaction ID"])
+df2.head(15)
